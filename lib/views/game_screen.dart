@@ -22,6 +22,7 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) => AlertDialog(
           shape: RoundedRectangleBorder(
@@ -79,6 +80,7 @@ class GameScreen extends StatelessWidget {
                                     .controller
                                     .pause();
                                 showDialog(
+                                  barrierDismissible: false,
                                   context: context,
                                   builder: (context) => AlertDialog(
                                     shape: RoundedRectangleBorder(
@@ -113,6 +115,7 @@ class GameScreen extends StatelessWidget {
                                           ElevatedButton(
                                               onPressed: () {
                                                 showDialog(
+                                                  barrierDismissible: false,
                                                   context: context,
                                                   builder: (context) =>
                                                       AlertDialog(
