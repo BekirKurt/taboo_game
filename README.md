@@ -1,6 +1,7 @@
 # taboo_game
 
-A new Flutter project.
+![taboo_game](https://github.com/BekirKurt/taboo_game/assets/73036927/6f59bab1-1d95-4594-ae0d-fe0a718f9314)
+
 
 ## Getting Started
 

@@ -75,22 +75,15 @@ class GameScreen extends StatelessWidget {
                         builder: (ctx, ref, child) {
                           return ElevatedButton(
                               onPressed: () {
-                                ref
-                                    .watch(wordsProvider.notifier)
-                                    .controller
-                                    .pause();
+                                ref.watch(wordsProvider.notifier).controller.pause();
                                 showDialog(
                                   barrierDismissible: false,
                                   context: context,
                                   builder: (context) => AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
                                     title: Container(
                                       alignment: Alignment.center,
-                                      child: const Text(
-                                        'Oyun duraklatıldı',
-                                      ),
+                                      child: const Text('Oyun duraklatıldı'),
                                     ),
                                     content: SizedBox(
                                       height: 40,
@@ -117,60 +110,37 @@ class GameScreen extends StatelessWidget {
                                                 showDialog(
                                                   barrierDismissible: false,
                                                   context: context,
-                                                  builder: (context) =>
-                                                      AlertDialog(
+                                                  builder: (context) => AlertDialog(
                                                     shape:
                                                         RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              16.0),
+                                                      borderRadius:BorderRadius.circular(16.0),
                                                     ),
                                                     title: Container(
-                                                        alignment:
-                                                            Alignment.center,
-                                                        child: const Text(
-                                                            'Oyun ayarları')),
+                                                        alignment:Alignment.center,
+                                                        child: const Text('Oyun ayarları')),
                                                     content: SizedBox(
                                                       height: 40,
                                                       child: Column(
                                                         children: [
                                                           Container(
-                                                            alignment: Alignment
-                                                                .center,
+                                                            alignment: Alignment.center,
                                                             child: const Text(
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
                                                                 "Ayarlara gitmek istediğinizden emin misiniz? Oyun tekrardan başlatılacak"),
+                                                                textAlign:TextAlign.center,
                                                           )
                                                         ],
                                                       ),
                                                     ),
                                                     actions: [
                                                       ElevatedButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: const Text(
-                                                              "İptal")),
+                                                          onPressed: () {Navigator.pop(context);},
+                                                          child: const Text("İptal")),
                                                       ElevatedButton(
                                                         onPressed: () {
-                                                          ref
-                                                              .watch(
-                                                                  wordsProvider
-                                                                      .notifier)
-                                                              .resetGame();
-
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          const StartScreen()));
+                                                          ref.watch(wordsProvider.notifier).resetGame();
+                                                          Navigator.push(context,MaterialPageRoute(builder:(context) =>const StartScreen()));
                                                         },
-                                                        child:
-                                                            const Text('Evet'),
+                                                        child:const Text('Evet'),
                                                       ),
                                                     ],
                                                   ),
@@ -179,10 +149,7 @@ class GameScreen extends StatelessWidget {
                                               child: const Text("Ayarlar")),
                                           ElevatedButton(
                                             onPressed: () {
-                                              ref
-                                                  .watch(wordsProvider.notifier)
-                                                  .controller
-                                                  .resume();
+                                              ref.watch(wordsProvider.notifier).controller.resume();
                                               Navigator.pop(context);
                                             },
                                             child: const Text('Devam et'),
@@ -210,8 +177,7 @@ class GameScreen extends StatelessWidget {
                                 return Text(
                                   "Skor : ${score.score} ",
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontWeight: FontWeight.bold, fontSize: 15)
                                 );
                               },
                             ),
@@ -222,8 +188,7 @@ class GameScreen extends StatelessWidget {
                                 return Text(
                                   "Pas hakkı : ${passValue.passValue}",
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontWeight: FontWeight.bold, fontSize: 15)
                                 );
                               },
                             )
@@ -241,8 +206,7 @@ class GameScreen extends StatelessWidget {
                                     width: 200,
                                     child: Consumer(
                                       builder: (ctx, watch, child) {
-                                        final currentTeam =
-                                            ref.watch(wordsProvider);
+                                        final currentTeam = ref.watch(wordsProvider);
                                         return Text(
                                           currentTeam.whichTeam
                                               ? "Takım : $teamAName"
@@ -257,15 +221,12 @@ class GameScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 8),
                                   Countdown(
-                                    controller: ref
-                                        .watch(wordsProvider.notifier)
-                                        .controller,
+                                    controller: ref.watch(wordsProvider.notifier).controller,
                                     seconds: timeValue.round(),
                                     build:
                                         (BuildContext context, double time) =>
-                                            Text(
-                                      "Zaman : ${time.round().toString()}",
-                                      style: const TextStyle(
+                                            Text("Zaman : ${time.round().toString()}",
+                                          style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15),
                                     ),
@@ -275,8 +236,7 @@ class GameScreen extends StatelessWidget {
                                         context: context,
                                         builder: (context) => AlertDialog(
                                           shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(16.0),
+                                            borderRadius:BorderRadius.circular(16.0),
                                           ),
                                           title: Container(
                                               alignment: Alignment.center,
@@ -285,43 +245,21 @@ class GameScreen extends StatelessWidget {
                                             height: 40,
                                             child: Column(
                                               children: [
-                                                Text(
-                                                    "$teamAName : ${ref.watch(wordsProvider.notifier).teamATotalScore}"),
-                                                Text(
-                                                    "$teamBName : ${ref.watch(wordsProvider.notifier).teamBTotalScore}"),
+                                                Text("$teamAName : ${ref.watch(wordsProvider.notifier).teamATotalScore}"),
+                                                Text("$teamBName : ${ref.watch(wordsProvider.notifier).teamBTotalScore}"),
                                               ],
                                             ),
                                           ),
                                           actions: [
                                             ElevatedButton(
                                               onPressed: () {
-                                                ref
-                                                    .watch(
-                                                        wordsProvider.notifier)
-                                                    .setScore();
-                                                ref
-                                                        .watch(wordsProvider
-                                                            .notifier)
-                                                        .setPassValue =
-                                                    passValue.round();
-                                                ref
-                                                        .watch(wordsProvider
-                                                            .notifier)
-                                                        .whichTeam =
-                                                    !ref
-                                                        .watch(wordsProvider
-                                                            .notifier)
-                                                        .whichTeam;
-                                                ref
-                                                    .watch(
-                                                        wordsProvider.notifier)
-                                                    .controller
-                                                    .restart();
-
+                                                ref.watch(wordsProvider.notifier).setScore();
+                                                ref.watch(wordsProvider.notifier).setPassValue = passValue.round();
+                                                ref.watch(wordsProvider.notifier).whichTeam = !ref.watch(wordsProvider.notifier).whichTeam;
+                                                ref.watch(wordsProvider.notifier).controller.restart();
                                                 Navigator.pop(context);
                                               },
-                                              child:
-                                                  const Text('Sıradaki takım'),
+                                              child: const Text('Sıradaki takım'),
                                             ),
                                           ],
                                         ),
@@ -364,11 +302,7 @@ class GameScreen extends StatelessWidget {
                         color: const Color(0xFF7D8F69),
                         child: Column(
                           children: [
-                            for (var i = 0;
-                                i <
-                                    yasakliKelimeler
-                                        .selectedWord.tabooWords.length;
-                                i++)
+                            for (var i = 0;i < yasakliKelimeler.selectedWord.tabooWords.length;i++)
                               Container(
                                 decoration: const BoxDecoration(
                                     border: Border(
@@ -379,13 +313,10 @@ class GameScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 22),
+                                      padding: const EdgeInsets.symmetric(vertical: 22),
                                       child: Text(
-                                        yasakliKelimeler
-                                            .selectedWord.tabooWords[i],
-                                        style: const TextStyle(
-                                            color: Colors.white, fontSize: 16),
+                                        yasakliKelimeler.selectedWord.tabooWords[i],
+                                        style: const TextStyle(color: Colors.white, fontSize: 16)
                                       ),
                                     ),
                                   ],
@@ -408,12 +339,8 @@ class GameScreen extends StatelessWidget {
                                 ref.watch(wordsProvider.notifier).tabooFun();
                               },
                               style: ButtonStyle(
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.white),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.red.shade600)),
+                                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.red.shade600)),
                               child: const Text("Tabu"),
                             );
                           },
@@ -423,10 +350,7 @@ class GameScreen extends StatelessWidget {
                             return ElevatedButton(
                               onPressed: () {
                                 ref.watch(wordsProvider.notifier).passFun();
-                                if (ref
-                                        .watch(wordsProvider.notifier)
-                                        .passValue ==
-                                    0) {
+                                if (ref.watch(wordsProvider.notifier).passValue == 0) {
                                   _showSnackbar(context, "Pas hakkınız doldu");
                                 }
                               },
@@ -441,12 +365,8 @@ class GameScreen extends StatelessWidget {
                                 ref.watch(wordsProvider.notifier).correctFun();
                               },
                               style: ButtonStyle(
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.white),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                    const Color(0xFF7D8F69),
+                                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                  backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF7D8F69),
                                   )),
                               child: const Text("Doğru"),
                             );
